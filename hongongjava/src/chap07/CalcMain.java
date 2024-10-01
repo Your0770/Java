@@ -6,7 +6,7 @@ public class CalcMain {
 		// 자식 객체 생성
 		Computer com = new Computer();
 		Calculator calc = new Calculator();
-		
+		 
 		
 		double result1 =  calc.areaCircle(10);
 		System.out.println("부모메소드 : " + result1);

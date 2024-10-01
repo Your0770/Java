@@ -8,7 +8,7 @@ public class Car {
 	Tire backRightTire = new Tire("뒤오른쪽", 4);
 	
 	//constructor
-	
+	 
 	//method
 	int run() {
 		System.out.println("[자동차가 달립니다.]");

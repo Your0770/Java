@@ -8,7 +8,7 @@ public class CarMain {
 		
 		for(int i = 1; i <= 15; i++) {
 			int problemLocation = car.run();
-			
+			 
 			switch(problemLocation) {
 			case 1 :
 				System.out.println("앞왼쪽 HankookTire로 교체");
