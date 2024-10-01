@@ -5,8 +5,8 @@ public class Account {
 	private String ano;
 	private String owner;
 	private int balance;
-	private final int MIN_BALANCE = 0;
-	private final int MAX_BALANCE = 1000000;
+	final static int MIN_BALANCE = 0;
+	final static int MAX_BALANCE = 1000000;
 	
 	//constructor
 	Account(){}
@@ -50,6 +50,7 @@ public class Account {
 		} else {
 			this.balance = balance;
 			System.out.println("더 이상 예금할수 없어 예금액을 반환합니다.");
+			System.out.println("반환액: " + inMoney);
 			System.out.println("현재 잔액: " + this.balance);
 		}
 	}

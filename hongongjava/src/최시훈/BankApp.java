@@ -26,11 +26,14 @@ public class BankApp {
 				String owner = sc.nextLine();
 				System.out.print("초기입금액: ");
 				int balance = Integer.parseInt(sc.nextLine());
-				if(accounts[cnt] == null) {
-					accounts[cnt] = new Account(ano, owner, balance);
+				if(acCheck(accounts, ano)) {
+//				if(accounts[cnt] == null) {
+//					accounts[cnt] = new Account(ano, owner, balance);
+					System.out.println("계좌 생성에 실패했습니다.");
 				}else {
-					cnt++;
 					accounts[cnt] = new Account(ano, owner, balance);
+					System.out.println("계좌가 생성되었습니다.");
+					cnt++;
 				}
 				break;
 				
@@ -38,10 +41,10 @@ public class BankApp {
 				System.out.println("---------");
 				System.out.println("계좌목록");
 				System.out.println("---------");
-				for(int i = 0; i < accounts.length; i++) {
+				quit2 : for(int i = 0; i < accounts.length; i++) {
 					if(accounts[i] != null) {
 						System.out.printf("%s\t%s\t%d\n", accounts[i].getAno(), accounts[i].getOwner(), accounts[i].getBalance());
-					}
+					}else break quit2;
 				}
 				break;
 				
@@ -53,12 +56,12 @@ public class BankApp {
 				String ano3 = sc.nextLine();
 				System.out.print("예금액: ");
 				int inMoney = Integer.parseInt(sc.nextLine());
-				for(int i = 0; i < accounts.length; i++) {
+				quit3 : for(int i = 0; i < accounts.length; i++) {
 					if(accounts[i] != null) {
 						if(accounts[i].getAno().equals(ano3)) {
 							accounts[i].inMoney(accounts[i].getBalance(), inMoney);
 						}
-					}
+					}else break quit3;
 				}
 				break;
 				
@@ -70,12 +73,12 @@ public class BankApp {
 				String ano4 = sc.nextLine();
 				System.out.print("출금액: ");
 				int outMoney = Integer.parseInt(sc.nextLine());
-				for(int i = 0; i < accounts.length; i++) {
+				quit4 : for(int i = 0; i < accounts.length; i++) {
 					if(accounts[i] != null) {
 						if(accounts[i].getAno().equals(ano4)) {
 							accounts[i].outMoney(accounts[i].getBalance(), outMoney);
 						}
-					}
+					}else break quit4;
 				}
 				break;
 				
@@ -89,4 +92,15 @@ public class BankApp {
 		sc.close();
 	}//main
 
-}
+	//method
+		static boolean acCheck(Account[] acc, String ano) {
+			for(int i = 0; i < acc.length; i++) {
+				if(acc[i] != null) {
+					if(acc[i].getAno().equals(ano)) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+}//class
