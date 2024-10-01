@@ -7,7 +7,7 @@ public class KumhoTire extends Tire{
 	public KumhoTire(String location, int maxRotation) {
 		super(location, maxRotation);
 	}
-		 
+	
 	//method
 	@Override
 	public boolean roll() {

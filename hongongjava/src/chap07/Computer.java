@@ -16,6 +16,5 @@ public class Computer extends Calculator {
 			return rs;
 		}
 	}
-	
 	 
 }

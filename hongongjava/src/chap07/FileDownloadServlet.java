@@ -2,9 +2,9 @@ package chap07;
 
 public class FileDownloadServlet extends HttpServlet {
 	//field
-		 
+	
 	//constructor
-			
+	
 	//method
 	@Override
 	public void service() {

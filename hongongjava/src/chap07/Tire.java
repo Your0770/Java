@@ -5,7 +5,7 @@ public class Tire {
 	public int maxRotation;
 	public int accumulatedRotation;
 	public String location;
-	 
+	
 	//constructor
 	public Tire(String location, int maxRotation) {
 		this.location = location;

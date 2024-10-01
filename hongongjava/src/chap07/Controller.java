@@ -10,7 +10,7 @@ public class Controller {
 	public void setService(MemberService service) {
 		this.service = service; 
 	}
-	 
+	
 	//main
 	public static void main(String[] args) {
 		//객체 생성
