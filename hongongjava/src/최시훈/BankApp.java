@@ -40,6 +40,7 @@ public class BankApp {
 				System.out.println("---------");
 				System.out.println("계좌목록");
 				System.out.println("---------");
+				
 				quit2 : for(int i = 0; i < accounts.length; i++) {
 					if(accounts[i] != null) {
 						System.out.printf("%s\t%s\t%d\n", accounts[i].getAno(), accounts[i].getOwner(), accounts[i].getBalance());
@@ -68,6 +69,7 @@ public class BankApp {
 //				메소드 사용
 				if(acCheck(accounts, ano3)) {
 					accounts[idxCheck(accounts, ano3)].inMoney(accounts[idxCheck(accounts, ano3)].getBalance(), inMoney);
+//					aCheck(accounts, ano3).inMoney(aCheck(accounts, ano3).getBalance(), inMoney);
 				}
 				break;
 				
@@ -79,9 +81,20 @@ public class BankApp {
 				String ano4 = sc.nextLine();
 				System.out.print("출금액: ");
 				int outMoney = Integer.parseInt(sc.nextLine());
-
+				
+//				메소드 사용안함
+//				quit4 : for(int i = 0; i < accounts.length; i++) {
+//					if(accounts[i] != null) {
+//						if(accounts[i].getAno().equals(ano4)) {
+//							accounts[i].outMoney(accounts[i].getBalance(), outMoney);
+//						}
+//					}else break quit4;
+//				}
+				
+//				메소드 사용
 				if(acCheck(accounts, ano4)) {
-					accounts[idxCheck(accounts, ano4)].outMoney(accounts[idxCheck(accounts, ano4)].getBalance(), outMoney);
+//					accounts[idxCheck(accounts, ano4)].outMoney(accounts[idxCheck(accounts, ano4)].getBalance(), outMoney);
+					aCheck(accounts, ano4).outMoney(aCheck(accounts, ano4).getBalance(), outMoney);
 				}
 				break;
 				
@@ -119,4 +132,18 @@ public class BankApp {
 			}
 			return i;
 		}
+		
+	// 계좌 값이 같을때 향상된 for문 이용
+		static Account aCheck(Account[] acc, String ano) {
+			Account ac = null;
+			for(Account A : acc) {
+				if(A != null) {
+					if(A.getAno().equals(ano)) {
+						ac = A;
+					}
+				}
+			}
+			return ac;
+		}
+		
 }//class
