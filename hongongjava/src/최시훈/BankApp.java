@@ -26,9 +26,8 @@ public class BankApp {
 				String owner = sc.nextLine();
 				System.out.print("초기입금액: ");
 				int balance = Integer.parseInt(sc.nextLine());
+				
 				if(acCheck(accounts, ano)) {
-//				if(accounts[cnt] == null) {
-//					accounts[cnt] = new Account(ano, owner, balance);
 					System.out.println("계좌 생성에 실패했습니다.");
 				}else {
 					accounts[cnt] = new Account(ano, owner, balance);
@@ -56,12 +55,19 @@ public class BankApp {
 				String ano3 = sc.nextLine();
 				System.out.print("예금액: ");
 				int inMoney = Integer.parseInt(sc.nextLine());
-				quit3 : for(int i = 0; i < accounts.length; i++) {
-					if(accounts[i] != null) {
-						if(accounts[i].getAno().equals(ano3)) {
-							accounts[i].inMoney(accounts[i].getBalance(), inMoney);
-						}
-					}else break quit3;
+				
+//				메소드 사용안함
+//				quit3 : for(int i = 0; i < accounts.length; i++) {
+//					if(accounts[i] != null) {
+//						if(accounts[i].getAno().equals(ano3)) {
+//							accounts[i].inMoney(accounts[i].getBalance(), inMoney);
+//						}
+//					}else break quit3;
+//				}
+				
+//				메소드 사용
+				if(acCheck(accounts, ano3)) {
+					accounts[idxCheck(accounts, ano3)].inMoney(accounts[idxCheck(accounts, ano3)].getBalance(), inMoney);
 				}
 				break;
 				
@@ -73,12 +79,9 @@ public class BankApp {
 				String ano4 = sc.nextLine();
 				System.out.print("출금액: ");
 				int outMoney = Integer.parseInt(sc.nextLine());
-				quit4 : for(int i = 0; i < accounts.length; i++) {
-					if(accounts[i] != null) {
-						if(accounts[i].getAno().equals(ano4)) {
-							accounts[i].outMoney(accounts[i].getBalance(), outMoney);
-						}
-					}else break quit4;
+
+				if(acCheck(accounts, ano4)) {
+					accounts[idxCheck(accounts, ano4)].outMoney(accounts[idxCheck(accounts, ano4)].getBalance(), outMoney);
 				}
 				break;
 				
@@ -93,6 +96,7 @@ public class BankApp {
 	}//main
 
 	//method
+	//중복된 계좌
 		static boolean acCheck(Account[] acc, String ano) {
 			for(int i = 0; i < acc.length; i++) {
 				if(acc[i] != null) {
@@ -102,5 +106,17 @@ public class BankApp {
 				}
 			}
 			return false;
+		}
+	//계좌 값이 같을때의 idx값 리턴	
+		static int idxCheck(Account[] acc, String ano) {
+			int i = 0;
+			for(i = 0; i < acc.length; i++) {
+				if(acc[i] != null) {
+					if(acc[i].getAno().equals(ano)) {
+						return i;
+					}
+				}
+			}
+			return i;
 		}
 }//class
