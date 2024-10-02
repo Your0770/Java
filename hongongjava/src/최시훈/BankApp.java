@@ -133,7 +133,7 @@ public class BankApp {
 			return i;
 		}
 		
-	// 계좌 값이 같을때 향상된 for문 이용
+//	 계좌 값이 같을때 향상된 for문 이용
 		static Account aCheck(Account[] acc, String ano) {
 			Account ac = null;
 			for(Account A : acc) {
